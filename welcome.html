@@ -8,7 +8,7 @@
     body {
       margin: 0;
       height: 100vh;
-      background-color: #4e3b31; 
+      background-color: #4e3b31;
       background-image: url('assets/pattern.png'); 
       background-size: cover;
       background-repeat: no-repeat;
@@ -17,7 +17,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #d4af37; 
+      color: #fdf7e7; 
     }
 
     .wrapper {
@@ -36,18 +36,17 @@
       font-family: 'Snell Roundhand', 'Lato', cursive;
       font-size: 2.2rem;
       margin-bottom: 1rem;
+      color: #fdf7e7; 
     }
 
     .line2-small {
       font-size: 1.5rem;
-      color: #fdf7e7;
       margin: 0;
     }
 
     .line2-big {
       font-size: 3rem;
       font-weight: bold;
-      color: #fdf7e7;
       margin-top: 0.5rem;
     }
   </style>
@@ -70,15 +69,15 @@
     setTimeout(() => {
       step1.classList.add("visible");
     }, 100);
-    
+
     setTimeout(() => {
       step1.classList.remove("visible");
       step2.classList.add("visible");
-    }, 1600);
+    }, 2600); 
 
     setTimeout(() => {
       window.location.href = "index.html";
-    }, 3300);
+    }, 5200); 
   </script>
 
 </body>
