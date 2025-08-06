@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Feast Info – Barley Hall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .highlight, .detail {
+      margin-bottom: 30px;
+    }
+    .highlight h2, .detail h3 { margin-bottom: 8px; }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .gallery img {
+      width: 200px;
+      height: auto;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="feast.html">Info</a>
+    <a href="interactive.html">Explore</a>
+    <a href="quiz.html">Quiz</a>
+  </nav>
+
+  <div class="container">
+    <!-- Introduction -->
+    <section>
+      <h1>Great Hall Feast Introduction</h1>
+      <p>The Great Hall at Barley Hall was used for medieval feasts... (简短背景介绍)</p>
+    </section>
+
+    <!-- Highlights -->
+    <section class="highlight">
+      <h2>Key Highlights</h2>
+      <ul>
+        <li><strong>Seating Arrangements:</strong> Who sat where? Seating order explained.</li>
+        <li><strong>Tableware & Utensils:</strong> What was used—plates, spoons, trenchers?</li>
+        <li><strong>Service Rituals:</strong> How meals were served in sequence.</li>
+      </ul>
+    </section>
+
+    <!-- Details -->
+    <section class="detail">
+      <h3>Seating Arrangements</h3>
+      <p>Description of host, honored guests, servants positions, etc.</p>
+
+      <h3>Utensils & Tableware</h3>
+      <p>Explanation of trenchers, spoons, goblets—materials and usage.</p>
+
+      <h3>Feast Etiquette & Ritual</h3>
+      <p>The order of service, greeting rituals, and medieval dining customs.</p>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery">
+      <img src="assets/feast1.jpg" alt="Medieval feast illustration">
+      <img src="assets/feast2.jpg" alt="Table setting diagram">
+      <img src="assets/feast3.jpg" alt="Historical serving scene">
+    </section>
+  </div>
+
+  <footer>
+    <p>Created for UXD Module | University of York | 2025</p>
+  </footer>
+</body>
+</html>
