@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Welcome</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
+      padding: 0;
       background-color: #000;
       color: gold;
       font-family: "Snell Roundhand", "Lato", cursive;
@@ -14,72 +15,50 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
     }
 
-    .wrapper {
-      position: relative;
+    .centered {
+      display: none;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
+    }
+
+    .visible {
+      display: flex;
     }
 
     .big-text {
       font-size: 3rem;
       font-weight: bold;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
+      margin: 0.5rem 0;
     }
 
-    .big-text.visible {
-      opacity: 1;
-    }
-
-    .welcome-group {
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .welcome-small {
-      font-size: 1.2rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .welcome-big {
-      font-size: 3rem;
-      font-weight: bold;
-    }
-
-    .welcome-group.visible {
-      opacity: 1;
+    .small-text {
+      font-size: 1.5rem;
+      margin: 0.5rem 0;
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div id="hey" class="big-text">Hey, you find me</div>
+  <div id="phase1" class="centered">
+    <div class="big-text">Hey, you find me</div>
+  </div>
 
-    <div id="welcome" class="welcome-group">
-      <div class="welcome-small">Welcome to</div>
-      <div class="welcome-big">Barley Hall!</div>
-    </div>
+  <div id="phase2" class="centered">
+    <div class="small-text">Welcome to</div>
+    <div class="big-text">Barley Hall!</div>
   </div>
 
   <script>
-    const hey = document.getElementById("hey");
-    const welcome = document.getElementById("welcome");
+    const phase1 = document.getElementById("phase1");
+    const phase2 = document.getElementById("phase2");
 
-    hey.classList.add("visible");
+    phase1.classList.add("visible");
 
     setTimeout(() => {
-      hey.classList.remove("visible");
-      welcome.classList.add("visible");
+      phase1.classList.remove("visible");
+      phase2.classList.add("visible");
     }, 1500);
 
     setTimeout(() => {
