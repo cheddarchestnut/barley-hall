@@ -5,127 +5,6 @@
   <title>Barley Hall Volunteer Training</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    nav {
-      background-color: #d2b48c; /* light brown / tan */
-      padding: 10px 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #333;
-    }
-
-    /* Hero Image Carousel */
-    .hero {
-      width: 100%;
-      height: 250px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      transition: opacity 1s ease-in-out;
-      opacity: 0;
-    }
-
-    .hero img.active {
-      opacity: 1;
-      z-index: 1;
-    }
-
-    .welcome {
-      text-align: center;
-      padding: 30px 20px;
-    }
-
-    .welcome h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: #333;
-    }
-
-    .welcome p {
-      font-size: 1rem;
-      color: #444;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .cards {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      padding: 30px 20px;
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      padding: 20px;
-      width: 300px;
-      text-align: center;
-    }
-
-    .card h3 {
-      margin-top: 10px;
-      font-size: 1.3rem;
-      color: #333;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      color: #666;
-    }
-
-    .card a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #007acc;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-    }
-
-    footer {
-      background-color: #d2b48c;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-    }
-
-    @media (max-width: 768px) {
-      .cards {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -136,7 +15,6 @@
     <a href="quiz.html">Quiz</a>
   </nav>
 
-  <!-- Hero Image Slideshow -->
   <div class="hero">
     <img src="assets/Barley-Hall.jpg" class="active" alt="Barley Hall view">
     <img src="assets/fachada.jpg" alt="Barley Hall facade">
@@ -144,7 +22,11 @@
 
   <section class="welcome">
     <h2>Welcome to the Barley Hall introduction page!</h2>
-    <p>Here you can explore the fun history and archaeology of the Great Hall. It’s a great way to help you share interesting facts with visitors as a volunteer. We hope you have a great time here!</p>
+    <p>
+      Here you can explore the fun history and archaeology of the Great Hall.
+      It’s a great way to help you share interesting facts with visitors as a volunteer.
+      We hope you have a great time here!
+    </p>
   </section>
 
   <section class="cards">
@@ -177,7 +59,7 @@
       images[current].classList.remove('active');
       current = (current + 1) % images.length;
       images[current].classList.add('active');
-    }, 3000); // switch image every 3 seconds
+    }, 3000);
   </script>
 
 </body>
