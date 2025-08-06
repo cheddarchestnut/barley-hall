@@ -1,0 +1,5 @@
+// This script will handle future interactivity
+
+function placeholderAction() {
+  alert("This feature will be available soon!");
+}
