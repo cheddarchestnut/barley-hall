@@ -7,42 +7,53 @@
   <style>
     body {
       margin: 0;
-      background-color: #000; /* black background */
-      color: gold; /* golden text */
+      background-color: #000;
+      color: gold;
       font-family: "Snell Roundhand", "Lato", cursive;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+    }
+
+    .message-group {
+      text-align: left;
+    }
+
+    .big-text {
+      font-size: 3rem;
+      font-weight: bold;
       text-align: center;
     }
 
-    .message {
-      font-size: 2rem;
+    .small-text {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .message-group {
       opacity: 0;
       transition: opacity 0.5s ease-in;
     }
 
-    .message.visible {
+    .message-group.visible {
       opacity: 1;
-    }
-
-    #barley {
-      font-size: 3rem;
-      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div id="step1" class="message">Hey, you find me</div>
-  <div id="step2" class="message">
-    <div>Welcome to</div>
-    <div id="barley">Barley Hall!</div>
+  <!-- Step 1: Hey message -->
+  <div id="step1" class="message-group">
+    <div class="big-text">Hey, you find me</div>
+  </div>
+
+  <!-- Step 2: Welcome message -->
+  <div id="step2" class="message-group">
+    <div class="small-text">Welcome to</div>
+    <div class="big-text">Barley Hall!</div>
   </div>
 
   <script>
-    // Step 1: Show greeting
     const step1 = document.getElementById("step1");
     const step2 = document.getElementById("step2");
 
