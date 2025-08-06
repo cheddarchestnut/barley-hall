@@ -1,61 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Welcome</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      background-color: #000; /* black background */
-      color: gold; /* golden text */
+      background-color: #000;
+      color: gold;
       font-family: "Snell Roundhand", "Lato", cursive;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      overflow: hidden;
+    }
+
+    .wrapper {
+      position: relative;
       text-align: center;
     }
 
-    .message {
-      font-size: 2rem;
+    .big-text {
+      font-size: 3rem;
+      font-weight: bold;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       opacity: 0;
-      transition: opacity 0.5s ease-in;
+      transition: opacity 0.5s ease-in-out;
     }
 
-    .message.visible {
+    .big-text.visible {
       opacity: 1;
     }
 
-    #barley {
+    .welcome-group {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .welcome-small {
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .welcome-big {
       font-size: 3rem;
       font-weight: bold;
+    }
+
+    .welcome-group.visible {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
-  <div id="step1" class="message">Hey, you find me</div>
-  <div id="step2" class="message">
-    <div>Welcome to</div>
-    <div id="barley">Barley Hall!</div>
+  <div class="wrapper">
+    <div id="hey" class="big-text">Hey, you find me</div>
+
+    <div id="welcome" class="welcome-group">
+      <div class="welcome-small">Welcome to</div>
+      <div class="welcome-big">Barley Hall!</div>
+    </div>
   </div>
 
   <script>
-    // Step 1: Show greeting
-    const step1 = document.getElementById("step1");
-    const step2 = document.getElementById("step2");
+    const hey = document.getElementById("hey");
+    const welcome = document.getElementById("welcome");
 
-    // Show "Hey, you find me"
-    step1.classList.add("visible");
+    hey.classList.add("visible");
 
-    // After 1.5s, hide step1 and show step2
     setTimeout(() => {
-      step1.classList.remove("visible");
-      step2.classList.add("visible");
+      hey.classList.remove("visible");
+      welcome.classList.add("visible");
     }, 1500);
 
-    // After 3s, redirect to index.html
     setTimeout(() => {
       window.location.href = "index.html";
     }, 3000);
