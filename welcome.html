@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #000; /* black background */
+      color: gold; /* golden text */
+      font-family: "Snell Roundhand", "Lato", cursive;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .message {
+      font-size: 2rem;
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+    }
+
+    .message.visible {
+      opacity: 1;
+    }
+
+    #barley {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="step1" class="message">Hey, you find me</div>
+  <div id="step2" class="message">
+    <div>Welcome to</div>
+    <div id="barley">Barley Hall!</div>
+  </div>
+
+  <script>
+    // Step 1: Show greeting
+    const step1 = document.getElementById("step1");
+    const step2 = document.getElementById("step2");
+
+    // Show "Hey, you find me"
+    step1.classList.add("visible");
+
+    // After 1.5s, hide step1 and show step2
+    setTimeout(() => {
+      step1.classList.remove("visible");
+      step2.classList.add("visible");
+    }, 1500);
+
+    // After 3s, redirect to index.html
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 3000);
+  </script>
+</body>
+</html>
