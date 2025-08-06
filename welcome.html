@@ -2,68 +2,84 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Welcome</title>
+  <title>Welcome to Barley Hall</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background-color: #000;
-      color: gold;
-      font-family: "Snell Roundhand", "Lato", cursive;
       height: 100vh;
+      background-color: #4e3b31; 
+      background-image: url('assets/pattern.png'); 
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: 'Lato', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
+      color: #d4af37; 
     }
 
-    .centered {
-      display: none;
-      flex-direction: column;
-      align-items: center;
+    .wrapper {
       text-align: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+      transform: translateY(20px);
     }
 
     .visible {
-      display: flex;
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .big-text {
+    .line1 {
+      font-family: 'Snell Roundhand', 'Lato', cursive;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .line2-small {
+      font-size: 1.5rem;
+      color: #fdf7e7;
+      margin: 0;
+    }
+
+    .line2-big {
       font-size: 3rem;
       font-weight: bold;
-      margin: 0.5rem 0;
-    }
-
-    .small-text {
-      font-size: 1.5rem;
-      margin: 0.5rem 0;
+      color: #fdf7e7;
+      margin-top: 0.5rem;
     }
   </style>
 </head>
 <body>
-  <div id="phase1" class="centered">
-    <div class="big-text">Hey, you find me</div>
+
+  <div id="step1" class="wrapper">
+    <div class="line1">Hey, you found me</div>
   </div>
 
-  <div id="phase2" class="centered">
-    <div class="small-text">Welcome to</div>
-    <div class="big-text">Barley Hall!</div>
+  <div id="step2" class="wrapper">
+    <div class="line2-small">Welcome to</div>
+    <div class="line2-big">Barley Hall!</div>
   </div>
 
   <script>
-    const phase1 = document.getElementById("phase1");
-    const phase2 = document.getElementById("phase2");
-
-    phase1.classList.add("visible");
+    const step1 = document.getElementById("step1");
+    const step2 = document.getElementById("step2");
 
     setTimeout(() => {
-      phase1.classList.remove("visible");
-      phase2.classList.add("visible");
-    }, 1500);
+      step1.classList.add("visible");
+    }, 100);
+    
+    setTimeout(() => {
+      step1.classList.remove("visible");
+      step2.classList.add("visible");
+    }, 1600);
 
     setTimeout(() => {
       window.location.href = "index.html";
-    }, 3000);
+    }, 3300);
   </script>
+
 </body>
 </html>
