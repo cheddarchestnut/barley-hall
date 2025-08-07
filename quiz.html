@@ -168,7 +168,7 @@
     <div class="modal-content" id="modalContent">
       <h2 id="resultTitle">Result</h2>
       <p id="resultMessage">Feedback goes here</p>
-      <button class="retry-btn" onclick="location.reload()">🔁 Retry</button>
+      <button class="retry-btn" onclick="clearAnswersAndRetry()">🔁 Retry</button>
       <button class="home-btn" onclick="location.href='index.html'">🏠 Home</button>
     </div>
   </div>
@@ -178,9 +178,29 @@
   </footer>
 
   <script>
+    window.onload = function () {
+      const savedAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
+      for (let q in savedAnswers) {
+        const selector = `input[name="${q}"][value="${savedAnswers[q]}"]`;
+        const input = document.querySelector(selector);
+        if (input) input.checked = true;
+      }
+    };
+
+    // storage
+    document.addEventListener("change", function (e) {
+      if (e.target && e.target.name.startsWith("q")) {
+        const currentAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || {};
+        currentAnswers[e.target.name] = e.target.value;
+        localStorage.setItem("quizAnswers", JSON.stringify(currentAnswers));
+      }
+    });
+
+    // check
     function checkAnswers() {
       const q1 = document.querySelector('input[name="q1"]:checked');
       const q2 = document.querySelector('input[name="q2"]:checked');
+      const q3 = document.querySelector('input[name="q3"]:checked');
 
       let correct = 0;
       if (q1 && q1.value === 'a') correct++;
@@ -190,7 +210,7 @@
       const title = document.getElementById("resultTitle");
       const message = document.getElementById("resultMessage");
 
-      if (!q1 || !q2 || !document.querySelector('input[name="q3"]:checked')) {
+      if (!q1 || !q2 || !q3) {
         title.textContent = "Oops!";
         message.textContent = "Please answer all questions before submitting.";
       } else if (correct === 2) {
@@ -202,6 +222,11 @@
       }
 
       modal.style.display = "flex";
+    }
+
+    function clearAnswersAndRetry() {
+      localStorage.removeItem("quizAnswers");
+      location.reload();
     }
   </script>
 
