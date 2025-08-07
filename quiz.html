@@ -50,7 +50,7 @@
     }
 
     .question-box h3 {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       color: #333;
     }
 
@@ -94,7 +94,8 @@
     <a href="quiz.html">Quiz</a>
   </nav>
 
-  <form class="quiz-container">
+  <form class="quiz-container" action="index.html" method="get">
+
     <div class="question-box">
       <h3>🎉 Congratulations! You open your eyes and realize you're hosting a grand feast. Where do you choose to sit?</h3>
       <label><input type="radio" name="q1" value="a"> A. Right in the middle 😎</label>
@@ -116,7 +117,7 @@
       <label><input type="radio" name="q3" value="c"> C. Absolutely yes!</label>
     </div>
 
-    <button type="button" class="submit-button">Submit Answers</button>
+    <button type="submit" class="submit-button">Submit Answers</button>
   </form>
 
   <footer>
