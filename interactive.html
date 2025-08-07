@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Explore | Barley Hall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f1e7;
+    }
+
+    nav {
+      background-color: #d2b48c;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #333;
+    }
+
+    .explore-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .tooltip-box {
+      position: absolute;
+      background-color: white;
+      border: 2px solid #d2b48c;
+      border-radius: 8px;
+      padding: 15px;
+      max-width: 250px;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none;
+    }
+
+    footer {
+      background-color: #d2b48c;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="feast.html">Info</a>
+    <a href="interactive.html">Explore</a>
+    <a href="quiz.html">Quiz</a>
+  </nav>
+
+  <div class="explore-container">
+    <h2>🕵️‍♀️ Tap to Discover Hidden Feast Secrets!</h2>
+    <div style="position: relative;">
+      <img src="assets/table.png" alt="Feast Table" usemap="#feastmap">
+
+      <map name="feastmap">
+        <area shape="rect" coords="120,80,250,300" alt="Peacock" onclick="showTooltip(event, 'This beautiful peacock was also a dish!')">
+        <area shape="rect" coords="300,420,500,560" alt="Roast" onclick="showTooltip(event, 'Hot and steaming, perhaps just lifted with a flesh hook.')">
+        <area shape="rect" coords="480,120,680,260" alt="Crown" onclick="showTooltip(event, 'This is the host’s seat. The place of greatest honour.')">
+      </map>
+
+      <div class="tooltip-box" id="tooltipBox"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Created for UXD Module | University of York | 2025</p>
+  </footer>
+
+  <script>
+    function showTooltip(event, text) {
+      const tooltip = document.getElementById("tooltipBox");
+      tooltip.textContent = text;
+      tooltip.style.left = event.pageX + 10 + 'px';
+      tooltip.style.top = event.pageY + 10 + 'px';
+      tooltip.style.display = 'block';
+    }
+
+    // Hide tooltip if clicking elsewhere
+    document.addEventListener('click', function (e) {
+      const tooltip = document.getElementById("tooltipBox");
+      if (!e.target.closest('area')) {
+        tooltip.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
