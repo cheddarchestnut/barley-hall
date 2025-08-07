@@ -76,6 +76,50 @@
       background-color: #b7956e;
     }
 
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .modal-content h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .modal-content button {
+      margin: 10px 10px 0;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .retry-btn {
+      background-color: #f0ad4e;
+      color: white;
+    }
+
+    .home-btn {
+      background-color: #5cb85c;
+      color: white;
+    }
+
     footer {
       background-color: #d2b48c;
       color: white;
@@ -94,7 +138,7 @@
     <a href="quiz.html">Quiz</a>
   </nav>
 
-  <form class="quiz-container" action="index.html" method="get">
+  <div class="quiz-container">
 
     <div class="question-box">
       <h3>🎉 Congratulations! You open your eyes and realize you're hosting a grand feast. Where do you choose to sit?</h3>
@@ -107,7 +151,7 @@
       <h3>🍗 A meaty dish is brought to the table. What do you think it’s made of?</h3>
       <label><input type="radio" name="q2" value="a"> A. Peacock 🦚</label>
       <label><input type="radio" name="q2" value="b"> B. Crocodile 🐊</label>
-      <label><input type="radio" name="q2" value="c"> C. Kangaroo 🦘 (Wait, what century is this?)</label>
+      <label><input type="radio" name="q2" value="c"> C. Kangaroo 🦘(Wait, what century is this?)</label>
     </div>
 
     <div class="question-box">
@@ -117,12 +161,49 @@
       <label><input type="radio" name="q3" value="c"> C. Absolutely yes!</label>
     </div>
 
-    <button type="submit" class="submit-button">Submit Answers</button>
-  </form>
+    <button class="submit-button" onclick="checkAnswers()">Submit Answers</button>
+  </div>
+
+  <div class="modal" id="resultModal">
+    <div class="modal-content" id="modalContent">
+      <h2 id="resultTitle">Result</h2>
+      <p id="resultMessage">Feedback goes here</p>
+      <button class="retry-btn" onclick="location.reload()">🔁 Retry</button>
+      <button class="home-btn" onclick="location.href='index.html'">🏠 Home</button>
+    </div>
+  </div>
 
   <footer>
     <p>Created for UXD Module | University of York | 2025</p>
   </footer>
+
+  <script>
+    function checkAnswers() {
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.querySelector('input[name="q2"]:checked');
+
+      let correct = 0;
+      if (q1 && q1.value === 'a') correct++;
+      if (q2 && q2.value === 'a') correct++;
+
+      const modal = document.getElementById("resultModal");
+      const title = document.getElementById("resultTitle");
+      const message = document.getElementById("resultMessage");
+
+      if (!q1 || !q2 || !document.querySelector('input[name="q3"]:checked')) {
+        title.textContent = "Oops!";
+        message.textContent = "Please answer all questions before submitting.";
+      } else if (correct === 2) {
+        title.textContent = "🎉 You're a Medieval Feast Master!";
+        message.textContent = "Congratulations! You’re now a medieval expert!";
+      } else {
+        title.textContent = "🧐 Almost there...";
+        message.textContent = `You got ${2 - correct} question${(2 - correct) > 1 ? 's' : ''} wrong. Think again!`;
+      }
+
+      modal.style.display = "flex";
+    }
+  </script>
 
 </body>
 </html>
