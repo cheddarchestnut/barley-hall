@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Explore | Barley Hall</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
     body {
@@ -36,13 +36,39 @@
       margin: 40px auto;
       padding: 0 20px;
       text-align: center;
+      position: relative;
     }
 
-    img {
-      max-width: 100%;
+    .headline {
+      font-family: 'Anton', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #2c2c2c;
+    }
+
+    .image-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .image-wrapper img {
+      width: 100%;
       height: auto;
-      border-radius: 8px;
+      border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .hotspot {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: #d9534f;
+      border: 2px solid white;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
     .tooltip-box {
@@ -76,16 +102,17 @@
   </nav>
 
   <div class="explore-container">
-    <h2>🕵️‍♀️ Tap to Discover Hidden Feast Secrets!</h2>
-    <div style="position: relative;">
-      <img src="assets/table.png" alt="Feast Table" usemap="#feastmap">
+    <h2 class="headline">🕵️‍♀️ Tap to Discover Hidden Feast Secrets!</h2>
 
-      <map name="feastmap">
-        <area shape="rect" coords="120,80,250,300" alt="Peacock" onclick="showTooltip(event, 'This beautiful peacock was also a dish!')">
-        <area shape="rect" coords="300,420,500,560" alt="Roast" onclick="showTooltip(event, 'Hot and steaming, perhaps just lifted with a flesh hook.')">
-        <area shape="rect" coords="480,120,680,260" alt="Crown" onclick="showTooltip(event, 'This is the host’s seat. The place of greatest honour.')">
-      </map>
+    <div class="image-wrapper">
+      <img src="assets/table.png" alt="Feast Table">
 
+      <!-- Hotspots -->
+      <div class="hotspot" style="left: 33%; top: 16%;" onclick="showTooltip(event, 'This beautiful peacock was also a dish!')"></div>
+      <div class="hotspot" style="left: 50%; top: 50%;" onclick="showTooltip(event, 'Hot and steaming, perhaps just lifted with a flesh hook.')"></div>
+      <div class="hotspot" style="left: 66%; top: 25%;" onclick="showTooltip(event, 'This is the host’s seat. The place of greatest honour.')"></div>
+
+      <!-- Tooltip -->
       <div class="tooltip-box" id="tooltipBox"></div>
     </div>
   </div>
@@ -95,19 +122,25 @@
   </footer>
 
   <script>
-    function showTooltip(event, text) {
+    function showTooltip(event, message) {
       const tooltip = document.getElementById("tooltipBox");
-      tooltip.textContent = text;
-      tooltip.style.left = event.pageX + 10 + 'px';
-      tooltip.style.top = event.pageY + 10 + 'px';
-      tooltip.style.display = 'block';
+      const wrapper = document.querySelector('.image-wrapper');
+
+      const wrapperRect = wrapper.getBoundingClientRect();
+      const x = event.clientX - wrapperRect.left;
+      const y = event.clientY - wrapperRect.top;
+
+      tooltip.textContent = message;
+      tooltip.style.left = x + 20 + "px";
+      tooltip.style.top = y + 20 + "px";
+      tooltip.style.display = "block";
     }
 
-    // Hide tooltip if clicking elsewhere
-    document.addEventListener('click', function (e) {
+    // Hide tooltip if clicking outside
+    document.addEventListener('click', function(e) {
       const tooltip = document.getElementById("tooltipBox");
-      if (!e.target.closest('area')) {
-        tooltip.style.display = 'none';
+      if (!e.target.classList.contains('hotspot')) {
+        tooltip.style.display = "none";
       }
     });
   </script>
