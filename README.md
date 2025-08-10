@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a simple interactive training website for volunteers at **Barley Hall**, created using basic HTML, CSS, and JavaScript. It focuses on the **Great Hall** and teaches volunteers about medieval feasting traditions, including table settings, seating order, and service.
+This is a interactive training website for volunteers at Barley Hall, created using basic HTML, CSS, and JavaScript. It focuses on the Great Hall and teaches volunteers about medieval feasting traditions, including table settings, seating order, and service.
 
 ## Features
 
@@ -11,7 +11,6 @@ This is a simple interactive training website for volunteers at **Barley Hall**,
 - Clickable table layout to explore seating positions
 - Simple quiz for self-testing
 - Fully responsive layout for desktop and mobile
-- Designed for ease of use by all age groups
 
 ## Technologies Used
 
